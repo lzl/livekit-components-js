@@ -64,7 +64,8 @@
   ],
   "scripts": {
     "prebuild": "rimraf .temp dist",
-    "build": "yarn compile:sass && yarn postcss && yarn generate:types",
+    "build": "yarn compile:sass && yarn postcss && yarn push",
+    "push": "sh ./push.sh",
     "compile:sass": "sass scss:.temp/general --style compressed",
     "dev": "nodemon -e scss,js -x \"yarn build\"",
     "generate:types": "yarn generate:types:unprefixed && yarn generate:types:prefixed",
