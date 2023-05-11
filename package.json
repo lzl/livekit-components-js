@@ -13,7 +13,7 @@
     "build:styles": "turbo run build --filter=@livekit/components-styles...",
     "dev:next": "turbo run dev --filter=@livekit/component-example-next...",
     "dev:storybook": "turbo run dev --filter=@livekit/component-docs-storybook...",
-    "dev:styles": "turbo run dev --filter=@livekit/components-styles...",
+    "dev:styles": "turbo run dev --filter=@lizunlong/livekit-components-styles...",
     "format:check": "prettier --check \"**/src/**/*.{ts,tsx,md}\"",
     "format:write": "prettier --write \"**/src/**/*.{ts,tsx,md}\"",
     "gen:docs": "turbo run gen:docs",

@@ -2,10 +2,10 @@
 
 $bg: #111;
 $fg: #fff;
-$danger: #f91f31;
-$success: #1ff968;
+$danger: #ff5630;
+$success: #00ab55;
 $warning: #f9b11f;
-$accent: #1f8cf9;
+$accent: #00ab55;
 
 [data-theme='default'] {
   color-scheme: dark;
@@ -25,13 +25,13 @@ $accent: #1f8cf9;
   --border-color: rgba(255, 255, 255, 0.1);
 
   --accent-fg: #fff;
-  --accent-bg: #1f8cf9;
+  --accent-bg: #00ab55;
   --accent2: #{color.adjust($accent, $lightness: 4%)};
   --accent3: #{color.adjust($accent, $lightness: 8%)};
   --accent4: #{color.adjust($accent, $lightness: 12%)};
 
   --danger-fg: #fff;
-  --danger: #f91f31;
+  --danger: #ff5630;
   --danger2: #{color.adjust($danger, $lightness: 4%)};
   --danger3: #{color.adjust($danger, $lightness: 8%)};
   --danger4: #{color.adjust($danger, $lightness: 12%)};
