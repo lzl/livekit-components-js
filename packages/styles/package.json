@@ -1,6 +1,6 @@
 {
-  "name": "@livekit/components-styles",
-  "version": "1.0.0",
+  "name": "@lizunlong/livekit-components-styles",
+  "version": "1.0.0-beta.1",
   "license": "Apache-2.0",
   "author": "LiveKit",
   "repository": {
@@ -64,10 +64,11 @@
   ],
   "scripts": {
     "prebuild": "rimraf .temp dist",
-    "build": "yarn compile:sass && yarn postcss && yarn push",
+    "build": "yarn compile:sass && yarn postcss && yarn generate:types",
+    "build:dev": "yarn compile:sass && yarn postcss && yarn push",
     "push": "sh ./push.sh",
     "compile:sass": "sass scss:.temp/general --style compressed",
-    "dev": "nodemon -e scss,js -x \"yarn build\"",
+    "dev": "nodemon -e scss,js -x \"yarn build:dev\"",
     "generate:types": "yarn generate:types:unprefixed && yarn generate:types:prefixed",
     "generate:types:prefixed": "cd dist && typed-scss-modules \"**/*.css\" --exportType default --outputFolder ../dist/types --nameFormat kebab",
     "generate:types:unprefixed": "cd scss && typed-scss-modules \"**/*.scss\" --exportType default --outputFolder ../dist/types_unprefixed --nameFormat kebab --exportTypeName UnprefixedClassNames",
