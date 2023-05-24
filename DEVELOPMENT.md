@@ -1,7 +1,7 @@
 # dev
 
 ```bash
-yarn dev:react
+yarn build:react
 yarn dev:styles
 ```
 

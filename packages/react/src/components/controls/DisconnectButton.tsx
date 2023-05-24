@@ -1,6 +1,7 @@
 import { ConnectionState } from 'livekit-client';
 import { setupDisconnectButton } from '@livekit/components-core';
 import * as React from 'react';
+import { toast } from 'react-hot-toast';
 import { useRoomContext } from '../../context';
 import { useConnectionState } from '../ConnectionState';
 import { mergeProps } from '../../utils';
@@ -19,7 +20,36 @@ export function useDisconnectButton(props: DisconnectButtonProps) {
     const { className, disconnect } = setupDisconnectButton(room);
     const mergedProps = mergeProps(props, {
       className,
-      onClick: () => disconnect(props.stopTracks ?? true),
+      onClick: () => {
+        toast(
+          (t) => (
+            <div className="space-y-2">
+              <p>Are you sure you want to leave?</p>
+              <div className="space-x-2">
+                <button
+                  className="rounded-md bg-brand-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
+                  onClick={() => {
+                    disconnect(props.stopTracks ?? true);
+                    toast.dismiss(t.id);
+                  }}
+                >
+                  Leave
+                </button>
+                <button
+                  className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  onClick={() => toast.dismiss(t.id)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ),
+          {
+            position: 'bottom-right',
+            duration: Infinity,
+          },
+        );
+      },
       disabled: connectionState === ConnectionState.Disconnected,
     });
     return mergedProps;
