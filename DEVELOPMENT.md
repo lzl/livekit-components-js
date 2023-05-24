@@ -1,6 +1,7 @@
 # dev
 
 ```bash
+yarn dev:react
 yarn dev:styles
 ```
 
@@ -8,5 +9,6 @@ yarn dev:styles
 
 ```bash
 yarn changeset
+yarn release:react
 yarn release:styles
 ```

@@ -1,6 +1,6 @@
 {
-  "name": "@livekit/components-react",
-  "version": "1.0.1",
+  "name": "@lizunlong/livekit-components-react",
+  "version": "1.0.0-beta.0",
   "license": "Apache-2.0",
   "author": "LiveKit",
   "repository": {
@@ -34,6 +34,7 @@
   ],
   "scripts": {
     "build": "yarn gen:svg && tsup --onSuccess \"tsc --declaration --emitDeclarationOnly\"",
+    "push": "sh ./push.sh",
     "dev": "tsup --watch --onSuccess \"tsc --declaration --emitDeclarationOnly\"",
     "gen:icons": "svgr --out-dir ./src/assets/icons --typescript ../styles/assets/icons",
     "gen:images": "svgr --out-dir ./src/assets/images --typescript --no-svgo ../styles/assets/images",
