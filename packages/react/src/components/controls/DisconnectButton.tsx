@@ -28,7 +28,24 @@ export function useDisconnectButton(props: DisconnectButtonProps) {
               <div className="space-x-2">
                 <button
                   className="rounded-md bg-brand-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
-                  onClick={() => {
+                  onClick={async () => {
+                    if (room?.name) {
+                      const result = await fetch(
+                        `https://faceto-ai.withcontext.ai/${room?.name}/transcript`,
+                        { method: 'POST' },
+                        // `https://ai-interview.withcontext.ai/v1/chat/transcript`,
+                        // {
+                        //   method: 'POST',
+                        //   headers: { 'Content-Type': 'application/json' },
+                        //   body: JSON.stringify({ name: '9ls0-azyg' }),
+                        // },
+                      ).then((res) => res.json());
+                      console.log('transcript result:', result);
+                      const transcript = result?.transcript?.list;
+                      if (transcript) {
+                        sessionStorage.setItem('transcript', JSON.stringify(transcript));
+                      }
+                    }
                     disconnect(props.stopTracks ?? true);
                     toast.dismiss(t.id);
                   }}
