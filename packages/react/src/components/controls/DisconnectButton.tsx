@@ -32,7 +32,7 @@ export function useDisconnectButton(props: DisconnectButtonProps) {
                     if (room?.name) {
                       const result = await fetch(
                         `https://faceto-ai.withcontext.ai/${room?.name}/transcript`,
-                        { method: 'POST' },
+                        { method: 'POST', headers: { 'Content-Type': 'application/json' } },
                         // `https://ai-interview.withcontext.ai/v1/chat/transcript`,
                         // {
                         //   method: 'POST',
@@ -44,6 +44,8 @@ export function useDisconnectButton(props: DisconnectButtonProps) {
                       const transcript = result?.transcript?.list;
                       if (transcript) {
                         sessionStorage.setItem('transcript', JSON.stringify(transcript));
+                        // go to /transcript page
+                        window.location.href = '/transcript';
                       }
                     }
                     disconnect(props.stopTracks ?? true);
